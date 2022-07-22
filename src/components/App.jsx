@@ -18,12 +18,20 @@ export class App extends Component {
   };
 
   handlerFilterUsers = ({ target: { value } }) => {
-    this.setState({ filter: { value } });
+    this.setState({ filter: value });
   };
 
   getSearchContacts = () => {
     const { contacts, filter } = this.state;
-    return contacts.filter(({ name }) => name.includes(filter));
+    return contacts.filter(({ name }) => {
+      return name.includes(filter);
+    });
+  };
+
+  handlerDelete = id => {
+    this.setState({
+      contacts: this.state.contacts.filter(contact => id !== contact.id),
+    });
   };
 
   render() {
@@ -38,7 +46,10 @@ export class App extends Component {
             filterContacts={filter}
             handlerFilterUsers={this.handlerFilterUsers}
           />
-          <ContactList contactList={this.getSearchContacts()} />
+          <ContactList
+            contactList={this.getSearchContacts()}
+            onDelete={this.handlerDelete}
+          />
         </Container>
       </div>
     );
