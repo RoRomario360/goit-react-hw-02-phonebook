@@ -13,10 +13,16 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
   addContactsData = contact => {
+    const repeatCont = this.state.contacts.some(
+      elem => elem.name.toLowerCase() === contact.name.toLowerCase()
+    );
+    if (repeatCont) {
+      alert('Bro');
+      return;
+    }
+
     this.setState(prevState => ({
       contacts: [...prevState.contacts, contact],
     }));
@@ -29,7 +35,7 @@ export class App extends Component {
   getSearchContacts = () => {
     const { contacts, filter } = this.state;
     return contacts.filter(({ name }) => {
-      return name.includes(filter);
+      return name.toLowerCase().includes(filter.toLowerCase());
     });
   };
 
