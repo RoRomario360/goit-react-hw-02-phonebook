@@ -19,7 +19,7 @@ export class App extends Component {
       elem => elem.name.toLowerCase() === contact.name.toLowerCase()
     );
     if (repeatCont) {
-      alert('Bro');
+      alert(`Sorry:( , but ${contact.name} already in contacts`);
       return;
     }
 
