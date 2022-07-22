@@ -17,6 +17,5 @@ export default function Filter({ handlerFilterUsers }) {
 }
 
 Filter.propTypes = {
-  filter: PropTypes.string,
   handlerFilterUsers: PropTypes.func.isRequired,
 };

@@ -1,8 +1,13 @@
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import { Component } from 'react';
+
 import s from './ContactForm.module.css';
 
 export class Form extends Component {
+  static propTypes = {
+    addContactsData: PropTypes.func.isRequired,
+  };
   state = {
     name: '',
     number: '',
@@ -17,6 +22,7 @@ export class Form extends Component {
     const id = nanoid();
     const user = { ...this.state, id };
     this.props.addContactsData(user);
+    this.setState({ name: '', number: '' });
   };
 
   render() {
