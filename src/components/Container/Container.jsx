@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import s from './Container.module.css';
 export default function Container({ title, children }) {
   return (
@@ -7,3 +9,8 @@ export default function Container({ title, children }) {
     </div>
   );
 }
+
+Container.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
